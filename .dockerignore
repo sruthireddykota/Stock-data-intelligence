@@ -1,0 +1,52 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.Python
+env/
+venv/
+myvenv/
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation
+README.md
+docs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development
+.env
+.env.local
+.editorconfig
+
+tests/
+
+# Build artifacts
+dist/
+build/
+*.log

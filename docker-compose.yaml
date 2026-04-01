@@ -1,0 +1,46 @@
+services:
+  stocks_fastapi:
+    container_name: stocks_fastapi
+    build: 
+      context: .
+      dockerfile: Dockerfile.fastapi
+    ports:
+      - 8010:8010
+    networks:
+      - stock_dashboard
+    
+    restart : unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8010/health"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  stocks_dashboard:
+    container_name: stocks_dashbaord
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    ports:
+      - 8511:8511
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8511/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - stock_dashboard
+
+networks:
+  stock_dashboard:
+    driver: bridge
+
+
+
+    
+
+    
